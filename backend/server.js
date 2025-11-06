@@ -39,7 +39,7 @@ const REGIONAL_ROUTING = {
   RU: "europe",
 };
 
-// POST endpoint – a frontend küldi a Riot ID-t
+// ✅ POST endpoint – a frontend küldi a Riot ID-t
 app.post("/api/profile", async (req, res) => {
   try {
     const { riotId } = req.body;
@@ -51,7 +51,6 @@ app.post("/api/profile", async (req, res) => {
 
     const [gameName, tagLine] = riotId.split("#");
 
-    // Alapértelmezett routing
     let regionalRoute = "europe";
     let platformRoute = "eun1";
 
@@ -95,7 +94,7 @@ app.post("/api/profile", async (req, res) => {
 
     const summoner = await summonerRes.json();
 
-    // Válasz vissza a frontendnek
+    // ✅ JSON válasz vissza a frontendnek
     res.json({
       name: account.gameName,
       level: summoner.summonerLevel,
@@ -108,16 +107,5 @@ app.post("/api/profile", async (req, res) => {
   }
 });
 
+// ✅ Backend indítása (NINCS több statikus fájl)
 app.listen(3000, () => console.log("Backend fut: http://localhost:3000"));
-
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, "../frontend")));
-
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/index.html"));
-});
