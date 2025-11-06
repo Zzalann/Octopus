@@ -1,4 +1,4 @@
-# 🎮 Octopus LoL Profile Viewer
+# 🎮 Octopus
 
 Egyszerű League of Legends profilkereső a Riot API-val.
 
